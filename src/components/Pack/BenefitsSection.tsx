@@ -45,10 +45,11 @@ export const BenefitsSection = () => {
       ref={sectionRef}
       className="relative bg-black py-16 px-4 sm:px-6 lg:px-8 transition-all duration-300 outline-none"
       id="benefits"
-      tabIndex={0}
+      tabIndex={-1}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       aria-labelledby="benefits-title"
+      
     >
       <div className="max-w-5xl mx-auto">
         {/* Título principal */}

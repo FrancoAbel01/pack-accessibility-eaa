@@ -89,7 +89,7 @@ export const LegalReputationSection = () => {
       ref={sectionRef}
       className="relative bg-white py-20 px-4 sm:px-6 lg:px-8 transition-all duration-300 outline-none"
       id="legal-reputation"
-      tabIndex={0}
+      tabIndex={-1}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       aria-labelledby="legal-title"

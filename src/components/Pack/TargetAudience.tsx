@@ -68,7 +68,7 @@ export const TargetAudience = () => {
       ref={sectionRef}
       className="relative bg-black py-16 px-4 sm:px-6 lg:px-8"
       id="audience"
-      tabIndex={0}
+      tabIndex={-1}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       aria-labelledby="audience-title"
