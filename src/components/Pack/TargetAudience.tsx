@@ -81,9 +81,9 @@ export const TargetAudience = () => {
           {t.titlePart1}
           <span className="text-[#0d9e71]">{t.titlePart2}</span>?
         </h1>
-        <h5 className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
+        <h2 className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
           {t.subtitle}
-        </h5>
+        </h2>
 
         <div className="flex flex-wrap justify-center items-center gap-8">
           {t.sectors.map((sector, index) => (

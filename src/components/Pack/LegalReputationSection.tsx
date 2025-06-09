@@ -117,9 +117,9 @@ export const LegalReputationSection = () => {
                 <div className="mb-6">
                   {cardIcons[index]}
                 </div>
-                <h3 className="text-2xl font-bold text-black mb-4 group-hover:text-black transition-colors">
+                <h2 className="text-2xl font-bold text-black mb-4 group-hover:text-black transition-colors">
                   {card.title}
-                </h3>
+                </h2>
                 <p className="text-gray-900">
                   {card.description}
                 </p>

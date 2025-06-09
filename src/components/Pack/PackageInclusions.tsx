@@ -137,7 +137,7 @@ export const PackageInclusions = () => {
                 <div className="bg-[#0d9e71]/10 text-[#0d9e71] p-4 rounded-full mb-6">
                   {icons[index]}
                 </div>
-                <h3 className="text-xl font-bold text-black mb-4">{card.title}</h3>
+                <h2 className="text-xl font-bold text-black mb-4">{card.title}</h2>
               </div>
               <div className="text-left flex-grow">
                 {card.items.map((item, i) => (

@@ -66,12 +66,12 @@ export const Hero = () => {
             >
               {t.title}
             </h1>
-            <h5 
+            <h2 
               className="text-xl text-gray-100 max-w-2xl mx-auto"
               tabIndex={-1}
             >
               {t.subtitle}
-            </h5>
+            </h2>
           </div>
 
           {/* Card con puntos destacados - no enfocable */}
