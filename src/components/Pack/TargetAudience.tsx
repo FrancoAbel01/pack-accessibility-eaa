@@ -5,7 +5,7 @@ const translations = {
   en: {
     titlePart1: "Who is ",
     titlePart2: "it for",
-    subtitle: "The pack is specially designed for small, medium and large companies in various sectors:",
+    subtitle: "The pack is aimed at all types of companies in various sectors:",
     sectors: [
       "Retail",
       "Banking",
@@ -18,7 +18,7 @@ const translations = {
   es: {
     titlePart1: "¿A quién va ",
     titlePart2: "dirigido",
-    subtitle: "El pack está especialmente dirigido a empresas pequeñas, medianas y grandes de diversos sectores:",
+    subtitle: "El pack está dirigido a todo tipo de empresas de diversos sectores:",
     sectors: [
       "Retail",
       "Banca",

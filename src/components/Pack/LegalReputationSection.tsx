@@ -15,7 +15,7 @@ const translations = {
       },
       {
         title: "Recognized standards",
-        description: "Based on WCAG 2.1 and EN 301 549, the reference standards in accessibility."
+        description: "Based on WCAG 2.2 and EN 301 549, the reference standards in accessibility."
       }
     ]
   },

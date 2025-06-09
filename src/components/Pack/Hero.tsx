@@ -2,30 +2,32 @@ import { useLanguage } from '../../Context/LanguageContext';
 
 const translations = {
   en: {
-    title: "Is your website ready for June 28?",
-    subtitle: "Comply with the European digital accessibility regulation in just 4 weeks",
-    cardTitle: "European Directive 2019/882 comes into force on June 28, 2025",
+    title: "Is your website ready to comply with the European Accessibility Act (EAA)?",
+    subtitle: "Kick-start your adaptation to WCAG 2.2 AA",
+    description: "We audit your critical modules and draft your Accessibility Statement in under 4 weeks, for just €3,000*, so you can meet the 28 June 2025 deadline with zero risk.",
+    cardTitle: "Our compliance package includes:",
     cardPoints: [
-      "Avoid penalties",
-      "Improve your image",
-      "Improve SEO",
-      "Demonstrate commitment"
+      "Comprehensive audit of critical modules",
+      "Accessibility Statement drafting",
+      "WCAG 2.2 AA compliance roadmap",
+      "Priority support to meet the deadline"
     ],
-    offer: 'Include "for only 3000€"',
+    offer: 'Special offer: just €3,000*',
     button: "I want more information"
   },
   es: {
-    title: "¿Tu web está preparada para el 28 de junio?",
-    subtitle: "Cumple con la normativa europea de accesibilidad digital en solo 4 semanas",
-    cardTitle: "La Directiva Europea 2019/882 entra en vigor el 28 de junio de 2025",
+    title: "¿Está tu web preparada para cumplir la Ley de Accesibilidad Europea (EAA)?",
+    subtitle: "Arranca tu adaptación a las WCAG 2.2 (nivel AA)",
+    description: "Auditamos tus módulos críticos y redactamos la Declaración de Accesibilidad en menos de 4 semanas, por solo 3000 €*, para que llegues a la fecha límite del 28 de junio de 2025 sin riesgos.",
+    cardTitle: "Nuestro paquete de cumplimiento incluye:",
     cardPoints: [
-      "Evita sanciones",
-      "Mejora tu imagen",
-      "Mejora el SEO",
-      "Demuestra compromiso"
+      "Auditoría completa de módulos críticos",
+      "Redacción de la Declaración de Accesibilidad",
+      "Hoja de ruta para cumplimiento WCAG 2.2 AA",
+      "Soporte prioritario para cumplir el plazo"
     ],
-    offer: 'Incluir "por solo 3000€"',
-    button: "Quiero mas informacion"
+    offer: 'Oferta especial: solo 3000€*',
+    button: "Quiero más información"
   }
 };
 
@@ -46,65 +48,77 @@ export const Hero = () => {
       id="home"
       aria-labelledby="hero-title"
       tabIndex={-1}
-      // Eliminamos cualquier posibilidad de enfoque en la sección
     >
-      <div 
+      <div
         className="max-w-4xl mx-auto text-center"
-        // Prevenimos enfoque en el contenedor principal
         tabIndex={-1}
       >
         <div className="space-y-12 flex flex-col items-center">
-          {/* Títulos principales - no enfocables */}
-          <div 
+          {/* Títulos principales */}
+          <div
             className="space-y-6"
             tabIndex={-1}
           >
-            <h1 
+            <h1
               id="hero-title"
               className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight"
               tabIndex={-1}
             >
               {t.title}
             </h1>
-            <h2 
-              className="text-xl text-gray-100 max-w-2xl mx-auto"
+            <h2
+              className="text-2xl md:text-3xl text-gray-100 max-w-2xl mx-auto"
               tabIndex={-1}
             >
-              {t.subtitle}
+              <span id="accesibilidad-web-wcag-22">
+                {t.subtitle.includes('WCAG') ? (
+                  <>
+                    {t.subtitle.split('WCAG')[0]}
+                    <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>
+                    {t.subtitle.split('WCAG')[1]}
+                  </>
+                ) : t.subtitle}
+              </span>
             </h2>
+            <p
+              className="text-xl text-white max-w-3xl mx-auto"
+              tabIndex={-1}
+            >
+              <strong>{t.description}</strong>
+            </p>
           </div>
 
-          {/* Card con puntos destacados - no enfocable */}
-          <div 
+          {/* Card con puntos destacados */}
+          <div
             className="rounded-xl p-6 w-full max-w-2xl border border-white/20"
             tabIndex={-1}
           >
-            <h3 
+            <p
               className="text-xl md:text-2xl font-semibold text-white mb-6"
               tabIndex={-1}
             >
               {t.cardTitle}
-            </h3>
-            <div 
+            </p>
+            <div
               className="grid grid-cols-1 sm:grid-cols-2 gap-3"
               tabIndex={-1}
             >
               {t.cardPoints.map((point, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="bg-[#0d9e71]/30 p-4 rounded-lg flex items-center justify-center gap-3"
                   tabIndex={-1}
                 >
-                  <svg 
-                    className="w-5 h-5 text-white flex-shrink-0" 
-                    fill="none" 
-                    stroke="currentColor" 
+                  <svg
+                    className="w-5 h-5 text-white flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
-                  <span 
+                  <span
                     className="text-lg font-medium text-white"
                     tabIndex={-1}
                   >
@@ -115,12 +129,12 @@ export const Hero = () => {
             </div>
           </div>
 
-          {/* Oferta y botón - solo el botón enfocable */}
-          <div 
+          {/* Oferta y botón */}
+          <div
             className="space-y-8"
             tabIndex={-1}
           >
-            <h3 
+            <h3
               className="text-xl md:text-2xl font-bold text-white"
               tabIndex={-1}
             >
@@ -128,7 +142,8 @@ export const Hero = () => {
             </h3>
             <button
               onClick={scrollToContact}
-              className="bg-white text-black hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300 focus:ring-4 focus:ring-white focus:ring-opacity-50"
+              className="bg-white text-black hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300 focus:ring-4 focus:ring-white focus:ring-opacity-50 focus:outline-none"
+              aria-label={t.button}
             >
               {t.button}
             </button>

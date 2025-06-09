@@ -31,8 +31,7 @@ const translations = {
       {
         title: "Accessibility Statement",
         items: [
-          "We draft a customized accessibility statement in accordance with the UNE-EN 301 549 (v.3.2.1) standard and the requirements established in Directive (EU) 2019/882 (European Accessibility Act), transposed into Spanish legislation through Law 11/2023.",
-          "This statement allows Altia to certify compliance with digital accessibility obligations that will be required as of June 28, 2025, while reinforcing its commitment to inclusion and equal access to its digital products and services."
+          "This declaration certifies compliance with the legal requirements for digital accessibility that will be mandatory from 28 June 2025, and reflects your organisation's commitment to inclusion, equal opportunities and universal access to your digital products and services."
         ]
       }
     ],
@@ -67,8 +66,7 @@ const translations = {
       {
         title: "Declaración de Accesibilidad",
         items: [
-          "Redactamos una declaración de accesibilidad personalizada conforme a la norma UNE-EN 301 549 (v.3.2.1) y a los requisitos establecidos en la Directiva (UE) 2019/882 (European Accessibility Act), transpuesta al ordenamiento jurídico español a través de la Ley 11/2023.",
-          "Esta declaración permite a Altia acreditar el cumplimiento de las obligaciones en materia de accesibilidad digital que serán exigibles a partir del 28 de junio de 2025, al tiempo que refuerza su compromiso con la inclusión y la igualdad de acceso a sus productos y servicios digitales."
+          "Esta declaración acredita el cumplimiento de los requisitos legales en materia de accesibilidad digital que serán obligatorios a partir del 28 de junio de 2025, y refleja el compromiso de su organización con la inclusión, la igualdad de oportunidades y el acceso universal a sus productos y servicios digitales."
         ]
       }
     ],
