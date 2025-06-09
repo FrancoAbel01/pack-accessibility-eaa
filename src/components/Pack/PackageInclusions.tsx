@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../Context/LanguageContext';
 
 const translations = {
@@ -79,8 +79,8 @@ const translations = {
 export const PackageInclusions = () => {
   const { language } = useLanguage();
   const [isFocused, setIsFocused] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const t = translations[language];
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const t = translations[language] || translations.en;
 
   useEffect(() => {
     if (isFocused && sectionRef.current) {
@@ -88,15 +88,14 @@ export const PackageInclusions = () => {
     }
   }, [isFocused]);
 
-  // Iconos para cada tarjeta
   const icons = [
-    <svg key="audit" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg key="audit" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>,
-    <svg key="widget" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg key="widget" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
     </svg>,
-    <svg key="declaration" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg key="declaration" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
     </svg>
   ];
@@ -104,15 +103,15 @@ export const PackageInclusions = () => {
   return (
     <section
       ref={sectionRef}
+      role="region"
+      aria-labelledby="inclusions-title"
       className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 transition-all duration-300 outline-none"
       id="inclusions"
       tabIndex={-1}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
-      aria-labelledby="inclusions-title"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Título principal */}
         <div className="text-center mb-12">
           <h1
             id="inclusions-title"
@@ -123,14 +122,11 @@ export const PackageInclusions = () => {
             {t.include}
           </h1>
           <div className="w-24 h-1 bg-[#0d9e71] mx-auto mt-6 mb-8"></div>
-          
-          {/* Introducción nueva */}
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto mt-6">
+          <p className="text-lg text-gray-900 max-w-3xl mx-auto mt-6">
             {t.intro}
           </p>
         </div>
 
-        {/* Grid de tarjetas */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {t.cards.map((card, index) => (
             <div
@@ -143,34 +139,19 @@ export const PackageInclusions = () => {
                 </div>
                 <h3 className="text-xl font-bold text-black mb-4">{card.title}</h3>
               </div>
-              
-              {/* Contenido detallado */}
               <div className="text-left flex-grow">
                 {card.items.map((item, i) => (
-                  <p key={i} className={`text-black mb-3 ${item.startsWith('•') ? 'pl-4' : ''}`}>
-                    {item}
-                  </p>
+                  <p key={i} className={`text-black mb-3 ${item.startsWith('•') ? 'pl-4' : ''}`}>{item}</p>
                 ))}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Banner verde con precio */}
-        <div className="bg-green-100 rounded-xl p-6 border border-green-200 max-w-4xl mx-auto">
-          <div className="flex items-center justify-center">
-            <svg
-              className="w-6 h-6 text-[#0d9e71] mr-3 flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <p className="text-[#0d9e71] font-bold text-lg sm:text-xl text-center">
-              {t.banner}
-            </p>
-          </div>
+        <div className="text-center">
+          <p className="text-lg font-semibold text-black bg-[#0d9e71]/10 border border-[#0d9e71] inline-block px-6 py-3 rounded-lg">
+            {t.banner}
+          </p>
         </div>
       </div>
     </section>

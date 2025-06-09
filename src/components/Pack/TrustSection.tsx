@@ -19,50 +19,48 @@ export const TrustSection = () => {
   const { language } = useLanguage();
   const t = translations[language];
 
-  // CSS filter para tintar cada logo de verde (#0d9e71) usando drop-shadow
-  const greenFilter = {
-    filter: 'drop-shadow(0 0 0 #0d9e71)'
+  // Filtro para convertir imágenes a blanco puro
+  const whiteFilter = {
+    filter: 'brightness(0) invert(1)'
   };
 
   return (
     <section className="bg-black py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto text-center">
-        {/* Título dinámico */}
         <h1 className="text-3xl sm:text-4xl font-bold text-white mb-8">
           {t.header}
         </h1>
 
-        {/* Fila de 5 logos reducidos y con filtro verde */}
-        <div className="flex justify-center items-center space-x-6">
+        <div className="flex justify-center items-center flex-wrap gap-6">
           <img
             src={applause}
-            alt="Company Logo 1"
-            className="h-8 w-auto filter"
-            style={greenFilter}
+            alt="Company Logo applause"
+            className="h-8 w-auto"
+            style={whiteFilter}
           />
           <img
             src={pros}
-            alt="Company Logo 2"
-            className="h-8 w-auto filter"
-            style={greenFilter}
+            alt="Company Logo pros"
+            className="h-8 w-auto"
+            style={whiteFilter}
           />
           <img
             src={crownpeak}
-            alt="Company Logo 3"
-            className="h-8 w-auto filter"
-            style={greenFilter}
+            alt="Company Logo crownpeak"
+            className="h-8 w-auto"
+            style={whiteFilter}
           />
           <img
             src={barcelo}
-            alt="Company Logo 4"
-            className="h-8 w-auto filter"
-            style={greenFilter}
+            alt="Company Logo barcelo"
+            className="h-8 w-auto"
+            style={whiteFilter}
           />
           <img
             src={front10}
-            alt="Company Logo 5"
-            className="h-8 w-auto filter"
-            style={greenFilter}
+            alt="Company Logo front10"
+            className="h-8 w-auto"
+            style={whiteFilter}
           />
         </div>
       </div>

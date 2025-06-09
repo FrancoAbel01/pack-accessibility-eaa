@@ -120,7 +120,7 @@ export const LegalReputationSection = () => {
                 <h3 className="text-2xl font-bold text-black mb-4 group-hover:text-black transition-colors">
                   {card.title}
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-900">
                   {card.description}
                 </p>
               </div>

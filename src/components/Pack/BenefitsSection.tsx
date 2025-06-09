@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../Context/LanguageContext';
 
 const translations = {
@@ -32,7 +32,7 @@ export const BenefitsSection = () => {
   const { language } = useLanguage();
   const [isFocused, setIsFocused] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const t = translations[language];
+  const t = translations[language] || translations.en;
 
   useEffect(() => {
     if (isFocused && sectionRef.current) {
@@ -43,18 +43,18 @@ export const BenefitsSection = () => {
   return (
     <section
       ref={sectionRef}
+      role="region"
+      aria-labelledby="benefits-title"
       className="relative bg-black py-16 px-4 sm:px-6 lg:px-8 transition-all duration-300 outline-none"
       id="benefits"
       tabIndex={-1}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
-      aria-labelledby="benefits-title"
-      
     >
       <div className="max-w-5xl mx-auto">
         {/* Título principal */}
         <div className="text-center mb-16">
-          <h1 
+          <h1
             id="benefits-title"
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
           >
@@ -67,19 +67,25 @@ export const BenefitsSection = () => {
         {/* Grid de beneficios */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {t.benefits.map((benefit, index) => (
-            <div 
-              key={index} 
-              className=" rounded-xl p-6 border border-[#0d9e71] transition-all duration-300 hover:shadow-lg"
+            <div
+              key={index}
+              className="rounded-xl p-6 border border-[#0d9e71] transition-all duration-300 hover:shadow-lg"
             >
               <div className="flex items-start">
                 <div className="flex-shrink-0 bg-[#0d9e71]/10 p-3 rounded-lg">
-                  <svg 
-                    className="w-6 h-6 text-[#0d9e71]" 
-                    fill="none" 
-                    stroke="currentColor" 
+                  <svg
+                    className="w-6 h-6 text-[#0d9e71]"
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </div>
                 <p className="ml-4 text-gray-200">{benefit}</p>
