@@ -35,7 +35,7 @@ const translations = {
         ]
       }
     ],
-    banner: "3 or 4 weeks of work and 3,000€ cost (VAT not included)"
+    banner: "3 - 4 weeks of work and 3,000€ cost (VAT not included)"
   },
   es: {
     title: "¿Qué incluye el ",
@@ -70,7 +70,7 @@ const translations = {
         ]
       }
     ],
-    banner: "3 o 4 semanas de trabajo y 3.000€ de coste (IVA no incluido)"
+    banner: "3 - 4 semanas de trabajo y 3.000€ de coste (IVA no incluido)"
   }
 };
 
