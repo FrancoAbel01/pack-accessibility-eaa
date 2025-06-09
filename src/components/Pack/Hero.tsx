@@ -12,7 +12,7 @@ const translations = {
       "Improve SEO",
       "Demonstrate commitment"
     ],
-    offer: 'Include "for only 3000 E"',
+    offer: 'Include "for only 3000€"',
     button: "I want more information"
   },
   es: {
@@ -25,8 +25,13 @@ const translations = {
       "Mejora el SEO",
       "Demuestra compromiso"
     ],
+<<<<<<< HEAD
     offer: 'Incluir "por solo 3000 E"',
     button: "Quiero más información"
+=======
+    offer: 'Incluir "por solo 3000€"',
+    button: "Quiero mas informacion"
+>>>>>>> a751eeac300de6323d663d2229501a5f458d6e88
   }
 };
 
