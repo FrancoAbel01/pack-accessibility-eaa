@@ -24,7 +24,7 @@ const translations = {
       "Mejora el SEO",
       "Demuestra compromiso"
     ],
-    offer: 'Incluir "por solo 3000 E"',
+    offer: 'Incluir "por solo 3000€"',
     button: "Quiero mas informacion"
   }
 };
