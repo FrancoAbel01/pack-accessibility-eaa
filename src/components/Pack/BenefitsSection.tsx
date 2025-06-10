@@ -16,7 +16,7 @@ const translations = {
   },
   es: {
     title: "¿Por qué contratar el ",
-    packText: "Pack Accesibilidad Web",
+    packText: "Paquete Accesibilidad Web",
     benefits: [
       "Cumple con la Directiva Europea de Accesibilidad (UE) 2019/882 y el RD 1112/2018.",
       "Evita multas y protege a tu empresa.",
@@ -59,9 +59,9 @@ export const BenefitsSection = () => {
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
           >
             {t.title}
-            <span className="text-[#0d9e71]">{t.packText}</span>?
+            <span className="text-[#0CB07C]">{t.packText}</span>?
           </h1>
-          <div className="w-24 h-1 bg-[#0d9e71] mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-[#0CB07C] mx-auto mt-6"></div>
         </div>
 
         {/* Grid de beneficios */}
@@ -69,12 +69,12 @@ export const BenefitsSection = () => {
           {t.benefits.map((benefit, index) => (
             <div
               key={index}
-              className="rounded-xl p-6 border border-[#0d9e71] transition-all duration-300 hover:shadow-lg"
+              className="rounded-xl p-6 border border-[#0CB07C] transition-all duration-300 hover:shadow-lg"
             >
               <div className="flex items-start">
-                <div className="flex-shrink-0 bg-[#0d9e71]/10 p-3 rounded-lg">
+                <div className="flex-shrink-0 bg-[#0CB07C]/10 p-3 rounded-lg">
                   <svg
-                    className="w-6 h-6 text-[#0d9e71]"
+                    className="w-6 h-6 text-[#0CB07C]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

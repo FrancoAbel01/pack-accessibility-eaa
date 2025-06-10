@@ -70,7 +70,7 @@ export const LegalReputationSection = () => {
       return (
         <>
           Legal Compliance
-          <span className="text-[#0d9e71]"> and Reputation</span>
+          <span className="text-[#066044]"> and Reputation</span>
         </>
       );
     } else {
@@ -78,7 +78,7 @@ export const LegalReputationSection = () => {
       return (
         <>
           Cumplimiento legal
-          <span className="text-[#0d9e71]"> y reputación</span>
+          <span className="text-[#066044]"> y reputación</span>
         </>
       );
     }
@@ -103,7 +103,7 @@ export const LegalReputationSection = () => {
           >
             {renderTitle()}
           </h1>
-          <div className="w-32 h-1 bg-[#0d9e71] mx-auto"></div>
+          <div className="w-32 h-1 bg-[#066044] mx-auto"></div>
         </div>
 
         {/* Grid de tarjetas */}

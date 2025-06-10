@@ -116,10 +116,10 @@ export const PackageInclusions = () => {
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4"
           >
             {t.title}
-            <span className="text-[#0d9e71]">{t.packText}</span>
+            <span className="text-[#066044]">{t.packText}</span>
             {t.include}
           </h1>
-          <div className="w-24 h-1 bg-[#0d9e71] mx-auto mt-6 mb-8"></div>
+          <div className="w-24 h-1 bg-[#066044] mx-auto mt-6 mb-8"></div>
           <p className="text-lg text-gray-900 max-w-3xl mx-auto mt-6">
             {t.intro}
           </p>
@@ -129,10 +129,10 @@ export const PackageInclusions = () => {
           {t.cards.map((card, index) => (
             <div
               key={index}
-              className="bg-gray-50 rounded-xl p-8 border border-[#0d9e71] transition-all duration-300 hover:border-green-300 flex flex-col"
+              className="bg-gray-50 rounded-xl p-8 border border-[#066044] transition-all duration-300 hover:border-green-300 flex flex-col"
             >
               <div className="flex flex-col items-center text-center mb-4">
-                <div className="bg-[#0d9e71]/10 text-[#0d9e71] p-4 rounded-full mb-6">
+                <div className="bg-[#066044]/10 text-[#066044] p-4 rounded-full mb-6">
                   {icons[index]}
                 </div>
                 <h2 className="text-xl font-bold text-black mb-4">{card.title}</h2>
@@ -147,7 +147,7 @@ export const PackageInclusions = () => {
         </div>
 
         <div className="text-center">
-          <p className="text-lg font-semibold text-black bg-[#0d9e71]/10 border border-[#0d9e71] inline-block px-6 py-3 rounded-lg">
+          <p className="text-lg font-semibold text-black bg-[#066044]/10 border border-[#066044] inline-block px-6 py-3 rounded-lg">
             {t.banner}
           </p>
         </div>

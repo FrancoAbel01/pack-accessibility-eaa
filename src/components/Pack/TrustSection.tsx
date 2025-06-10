@@ -8,10 +8,10 @@ import front10 from '../../img/front10.png';
 
 const translations = {
   en: {
-    header: "They Trust Us"
+    header: 'They Trust Us'
   },
   es: {
-    header: "Confían en nosotros"
+    header: 'Confían en nosotros'
   }
 };
 
@@ -19,7 +19,12 @@ export const TrustSection = () => {
   const { language } = useLanguage();
   const t = translations[language];
 
-  // Filtro para convertir imágenes a blanco puro
+  // Split header text to style the last word
+  const words = t.header.split(' ');
+  const lastWord = words.pop();
+  const rest = words.join(' ');
+
+  // Filter to convert logos to pure white
   const whiteFilter = {
     filter: 'brightness(0) invert(1)'
   };
@@ -28,7 +33,8 @@ export const TrustSection = () => {
     <section className="bg-black py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto text-center">
         <h1 className="text-3xl sm:text-4xl font-bold text-white mb-8">
-          {t.header}
+          {rest} <span style={{ color: '#0CB07C' }}>{lastWord}</span>
+           <div className="w-24 h-1 bg-[#0CB07C] mx-auto mt-6"></div>
         </h1>
 
         <div className="flex justify-center items-center flex-wrap gap-6">

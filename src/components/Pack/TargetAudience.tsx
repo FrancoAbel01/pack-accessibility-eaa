@@ -79,7 +79,8 @@ export const TargetAudience = () => {
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
         >
           {t.titlePart1}
-          <span className="text-[#0d9e71]">{t.titlePart2}</span>?
+          <span className="text-[#0CB07C]">{t.titlePart2}</span>?
+           <div className="w-24 h-1 bg-[#0CB07C] mx-auto mt-6"></div>
         </h1>
         <h2 className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
           {t.subtitle}
@@ -88,10 +89,11 @@ export const TargetAudience = () => {
         <div className="flex flex-wrap justify-center items-center gap-8">
           {t.sectors.map((sector, index) => (
             <div key={index} className="flex flex-col items-center w-28">
-              <div className="bg-[#0d9e71]/10 p-3 rounded-2xl mb-2">
+              <div className="bg-[#0CB07C]/10 p-3 rounded-2xl mb-2">
                 {sectorIcons[index]}
               </div>
               <span className="text-sm text-white text-center">{sector}</span>
+              
             </div>
           ))}
         </div>

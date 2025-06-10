@@ -4,7 +4,7 @@ const translations = {
   en: {
     title: "Is your website ready to comply with the European Accessibility Act (EAA)?",
     subtitle: "Kick-start your adaptation to WCAG 2.2 AA",
-    description: "We audit your critical modules and draft your Accessibility Statement in under 4 weeks, for just €3,000*, so you can meet the 28 June 2025 deadline with zero risk.",
+    description: "We audit your critical modules and write the Accessibility Statement in a maximum of 4 weeks., for just 3000 €, so you can meet the 28 June 2025 deadline with zero risk.",
     cardTitle: "Our compliance package includes:",
     cardPoints: [
       "Comprehensive audit of critical modules",
@@ -12,13 +12,13 @@ const translations = {
       "WCAG 2.2 AA compliance roadmap",
       "Priority support to meet the deadline"
     ],
-    offer: 'Special offer: just €3,000*',
+   
     button: "I want more information"
   },
   es: {
     title: "¿Está tu web preparada para cumplir la Ley de Accesibilidad Europea (EAA)?",
     subtitle: "Arranca tu adaptación a las WCAG 2.2 (nivel AA)",
-    description: "Auditamos tus módulos críticos y redactamos la Declaración de Accesibilidad en menos de 4 semanas, por solo 3000 €*, para que llegues a la fecha límite del 28 de junio de 2025 sin riesgos.",
+    description: "Auditamos tus módulos críticos y redactamos la Declaración de Accesibilidad en un maximo de 4 semanas, por solo 3000 €, para que llegues a la fecha límite del 28 de junio de 2025 sin riesgos.",
     cardTitle: "Nuestro paquete de cumplimiento incluye:",
     cardPoints: [
       "Auditoría completa de módulos críticos",
@@ -26,7 +26,7 @@ const translations = {
       "Hoja de ruta para cumplimiento WCAG 2.2 AA",
       "Soporte prioritario para cumplir el plazo"
     ],
-    offer: 'Oferta especial: solo 3000€*',
+    
     button: "Quiero más información"
   }
 };
@@ -54,7 +54,7 @@ export const Hero = () => {
         tabIndex={-1}
       >
         <div className="space-y-12 flex flex-col items-center">
-          {/* Títulos principales */}
+          
           <div
             className="space-y-6"
             tabIndex={-1}
@@ -74,7 +74,13 @@ export const Hero = () => {
                 {t.subtitle.includes('WCAG') ? (
                   <>
                     {t.subtitle.split('WCAG')[0]}
-                    <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>
+                    <abbr 
+                      lang="en" 
+                      title="Web Content Accessibility Guidelines"
+                      style={{ textDecoration: "none" }}  
+                    >
+                      WCAG
+                    </abbr>
                     {t.subtitle.split('WCAG')[1]}
                   </>
                 ) : t.subtitle}
@@ -134,12 +140,6 @@ export const Hero = () => {
             className="space-y-8"
             tabIndex={-1}
           >
-            <h3
-              className="text-xl md:text-2xl font-bold text-white"
-              tabIndex={-1}
-            >
-              {t.offer}
-            </h3>
             <button
               onClick={scrollToContact}
               className="bg-white text-black hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300 focus:ring-4 focus:ring-white focus:ring-opacity-50 focus:outline-none"

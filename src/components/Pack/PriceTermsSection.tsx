@@ -4,7 +4,7 @@ import { useLanguage } from '../../Context/LanguageContext';
 // SVG icon for duration (clock)
 const ClockIcon = () => (
   <svg
-    className="w-8 h-8 text-[#0d9e71] mb-2"
+    className="w-8 h-8 text-[#066044] mb-2"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -21,7 +21,7 @@ const ClockIcon = () => (
 // SVG icon for checkmark (accepted)
 const CheckIcon = () => (
   <svg
-    className="w-6 h-6 text-[#0d9e71] flex-shrink-0 mr-2"
+    className="w-6 h-6 text-[#066044] flex-shrink-0 mr-2"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -79,13 +79,13 @@ export const PriceTermsSection = () => {
     if (language === "en") {
       return (
         <>
-          Price and <span className="text-[#0d9e71]">Terms</span>
+          Price and <span className="text-[#066044]">Terms</span>
         </>
       );
     } else {
       return (
         <>
-          Precio y <span className="text-[#0d9e71]">condiciones</span>
+          Precio y <span className="text-[#066044]">condiciones</span>
         </>
       );
     }
@@ -99,7 +99,7 @@ export const PriceTermsSection = () => {
           {/* Encabezado */}
           <h1 className="text-3xl sm:text-4xl font-bold text-black text-center mb-8">
             {renderHeader()}
-          <div className="w-24 h-1 bg-[#0d9e71] mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-[#066044] mx-auto mt-6"></div>
           </h1>
           {/* Tres columnas */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-left">

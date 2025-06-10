@@ -248,7 +248,7 @@ const Footer: React.FC = () => {
               <img
                 src={IAAPLogo}
                 alt="IAAP Logo"
-                className="w-16 h-16 mr-4 object-contain"
+                className="w-40 h-40 mr-4 object-contain"
               />
               <p className="text-gray-300">
                 {translations[language].about}
