@@ -1,30 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Linkedin, Mail } from 'lucide-react';
 import { useLanguage } from '../Context/LanguageContext';
 import IAAPLogo from '../img/iaap.png';
 
 const Footer: React.FC = () => {
   const { language } = useLanguage();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: ''
-  });
-  const [errors, setErrors] = useState({
-    name: '',
-    email: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [errors, setErrors] = useState({ name: '', email: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [hasTriedSubmit, setHasTriedSubmit] = useState(false);
+
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
 
   const translations = {
     en: {
       newsletter: {
         title: "Want to subscribe to stay ahead with the latest in accessibility?",
         description: "Join our newsletter for exclusive updates, industry insights, and accessibility best practices.",
-        formLabels: {
-          name: "Name (required)",
-          email: "Email address (required)"
-        },
+        formLabels: { name: "Name (required)", email: "Email address (required)" },
         namePlaceholder: "Your name",
         emailPlaceholder: "Email address",
         button: "Subscribe Now",
@@ -44,10 +39,7 @@ const Footer: React.FC = () => {
       newsletter: {
         title: "¿Quieres suscribirte para estar al día con lo último en accesibilidad?",
         description: "Únete a nuestro boletín para recibir actualizaciones exclusivas, información de la industria y mejores prácticas de accesibilidad.",
-        formLabels: {
-          name: "Nombre (requerido)",
-          email: "Correo electrónico (requerido)"
-        },
+        formLabels: { name: "Nombre (requerido)", email: "Correo electrónico (requerido)" },
         namePlaceholder: "Tu nombre",
         emailPlaceholder: "Correo electrónico",
         button: "Suscríbete",
@@ -65,48 +57,46 @@ const Footer: React.FC = () => {
     }
   };
 
-  const validateField = (name: string, value: string) => {
-    let error = '';
-    if (name === 'name' && !value.trim()) {
-      error = translations[language].validation.nameRequired;
+  const validateField = (field: 'name' | 'email', value: string) => {
+    const v = translations[language].validation;
+    if (field === 'name' && !value.trim()) return v.nameRequired;
+    if (field === 'email') {
+      if (!value.trim()) return v.emailRequired;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return v.emailInvalid;
     }
-    if (name === 'email') {
-      if (!value.trim()) {
-        error = translations[language].validation.emailRequired;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        error = translations[language].validation.emailInvalid;
-      }
-    }
-    return error;
-  };
-
-  const validateForm = () => {
-    const nameError = validateField('name', formData.name);
-    const emailError = validateField('email', formData.email);
-    setErrors({ name: nameError, email: emailError });
-    return !nameError && !emailError;
+    return '';
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name as keyof typeof errors]) {
+    if (errors[name as 'name' | 'email']) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
 
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    const error = validateField(name, value);
-    setErrors(prev => ({ ...prev, [name]: error }));
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    setHasTriedSubmit(true);
+
+    // Validamos campos y capturamos errores
+    const nameError = validateField('name', formData.name);
+    const emailError = validateField('email', formData.email);
+    setErrors({ name: nameError, email: emailError });
+
+    // Si hay errores, enfocamos primero el que exista y salimos
+    if (nameError) {
+      nameInputRef.current?.focus();
+      return;
+    }
+    if (emailError) {
+      emailInputRef.current?.focus();
+      return;
+    }
+
+    // Si todo OK, procedemos con el envío
     setIsSubmitting(true);
     setSubmitStatus('idle');
-
     try {
       const { name, email } = formData;
       const subject = language === 'en'
@@ -138,8 +128,9 @@ const Footer: React.FC = () => {
       setTimeout(() => {
         setFormData({ name: '', email: '' });
         setIsSubmitting(false);
+        setHasTriedSubmit(false);
       }, 2000);
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
       setIsSubmitting(false);
     }
@@ -172,55 +163,53 @@ const Footer: React.FC = () => {
 
             <form noValidate onSubmit={handleSubmit} className="w-full lg:w-3/5 flex flex-col gap-6">
               <div className="flex flex-col sm:flex-row gap-4 w-full">
+                {/* Name */}
                 <div className="flex-1">
-                  <label
-                    htmlFor="footer-name"
-                    className="block text-sm font-medium text-white mb-2"
-                  >
+                  <label htmlFor="footer-name" className="block text-sm font-medium text-white mb-2">
                     {translations[language].newsletter.formLabels.name}
                   </label>
                   <input
+                    ref={nameInputRef}
                     id="footer-name"
-                    type="text"
                     name="name"
+                    type="text"
                     placeholder={translations[language].newsletter.namePlaceholder}
-                    className={`w-full px-4 py-3 bg-transparent border rounded-lg focus:outline-none placeholder-white text-white ${errors.name ? 'border-red-500' : 'border-gray-700 focus:border-[#0d9e71]'
-                      }`}
+                    className={`w-full px-4 py-3 bg-transparent border rounded-lg placeholder-white text-white
+                      focus:outline focus:outline-2 focus:outline-[#0CB07C] focus:outline-offset-2
+                      ${hasTriedSubmit && errors.name ? 'border-red-500' : 'border-gray-700'}`}
                     value={formData.name}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     disabled={isSubmitting}
-                    aria-invalid={!!errors.name}
-                    aria-describedby={errors.name ? "name-error" : undefined}
+                    aria-invalid={hasTriedSubmit && !!errors.name}
+                    aria-describedby={hasTriedSubmit && errors.name ? "name-error" : undefined}
                   />
-                  {errors.name && (
+                  {hasTriedSubmit && errors.name && (
                     <p id="name-error" className="mt-1 text-sm text-red-500" role="alert">
                       {errors.name}
                     </p>
                   )}
                 </div>
+                {/* Email */}
                 <div className="flex-1">
-                  <label
-                    htmlFor="footer-email"
-                    className="block text-sm font-medium text-white mb-2"
-                  >
+                  <label htmlFor="footer-email" className="block text-sm font-medium text-white mb-2">
                     {translations[language].newsletter.formLabels.email}
                   </label>
                   <input
+                    ref={emailInputRef}
                     id="footer-email"
-                    type="email"
                     name="email"
+                    type="email"
                     placeholder={translations[language].newsletter.emailPlaceholder}
-                    className={`w-full px-4 py-3 bg-transparent border rounded-lg focus:outline-none placeholder-white text-white ${errors.email ? 'border-red-500' : 'border-gray-700 focus:border-[#0d9e71]'
-                      }`}
+                    className={`w-full px-4 py-3 bg-transparent border rounded-lg placeholder-white text-white
+                      focus:outline focus:outline-2 focus:outline-[#0CB07C] focus:outline-offset-2
+                      ${hasTriedSubmit && errors.email ? 'border-red-500' : 'border-gray-700'}`}
                     value={formData.email}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     disabled={isSubmitting}
-                    aria-invalid={!!errors.email}
-                    aria-describedby={errors.email ? "email-error" : undefined}
+                    aria-invalid={hasTriedSubmit && !!errors.email}
+                    aria-describedby={hasTriedSubmit && errors.email ? "email-error" : undefined}
                   />
-                  {errors.email && (
+                  {hasTriedSubmit && errors.email && (
                     <p id="email-error" className="mt-1 text-sm text-red-500" role="alert">
                       {errors.email}
                     </p>
@@ -231,35 +220,28 @@ const Footer: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-[#036445] hover:bg-[#023827] px-8 py-4 rounded-lg font-medium transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed text-white w-full sm:w-auto"
+                  className="bg-[#036445] hover:bg-[#023827] px-8 py-4 rounded-lg font-medium transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed text-white w-full sm:w-auto
+                  focus:outline focus:outline-2 focus:outline-[#0d9e71] focus:outline-offset-2"
                 >
-                  {isSubmitting ?
-                    (language === 'en' ? 'Sending...' : 'Enviando...') :
-                    translations[language].newsletter.button}
+                  {isSubmitting
+                    ? (language === 'en' ? 'Sending...' : 'Enviando...')
+                    : translations[language].newsletter.button}
                 </button>
               </div>
             </form>
           </div>
         </div>
 
+        {/* Sección About / Contacto */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-white">
           <div className="flex flex-col">
             <div className="flex items-center mb-6">
-              <img
-                src={IAAPLogo}
-                alt="IAAP Logo"
-                className="w-40 h-40 mr-4 object-contain"
-              />
-              <p className="text-gray-300">
-                {translations[language].about}
-              </p>
+              <img src={IAAPLogo} alt="IAAP Logo" className="w-40 h-40 mr-4 object-contain" />
+              <p className="text-gray-300">{translations[language].about}</p>
             </div>
           </div>
-
           <div>
-            <h3 className="font-semibold text-lg mb-6 text-white">
-              {translations[language].contact}
-            </h3>
+            <h3 className="font-semibold text-lg mb-6 text-white">{translations[language].contact}</h3>
             <ul className="space-y-4">
               <li className="flex items-start text-gray-300">
                 <Mail className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" />
@@ -271,7 +253,7 @@ const Footer: React.FC = () => {
                   href="https://www.linkedin.com/company/a11ysolutions/posts/?feedView=all"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#0d9e71] transition-colors"
+                  className="hover:text-[#0d9e71] transition-colors focus:outline focus:outline-2 focus:outline-[#0d9e71] focus:outline-offset-2 rounded"
                 >
                   LinkedIn
                 </a>
@@ -280,6 +262,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
+        {/* Footer final */}
         <div className="mt-12 pt-8 border-t border-gray-800">
           <div className="text-center text-gray-300">
             {translations[language].copyright}

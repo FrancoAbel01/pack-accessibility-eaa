@@ -22,7 +22,7 @@ const translations: Record<'en' | 'es', Translations> = {
     contact: 'Contact us',
     menu: 'Menu',
     closeMenu: 'Close menu',
-    home: 'Go to home',
+    home: 'A11ySolutions Logo',
     logoAlt: 'A11ySolutions Logo',
     languages: { en: 'ENGLISH', es: 'SPANISH' },
     languageSelector: 'Language selector. Current language: English',
@@ -32,7 +32,7 @@ const translations: Record<'en' | 'es', Translations> = {
     contact: 'Contáctanos',
     menu: 'Menú',
     closeMenu: 'Cerrar menú',
-    home: 'Ir al inicio',
+    home: 'Logo de A11ysolutions',
     logoAlt: 'Logo de A11ysolutions',
     languages: { en: 'INGLÉS', es: 'ESPAÑOL' },
     languageSelector: 'Selector de idioma. Idioma actual: Español',
@@ -191,6 +191,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   );
 };
 
+
 export const Header: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -216,10 +217,11 @@ export const Header: React.FC = () => {
     <>
       <header className="fixed top-0 w-full bg-white shadow-md z-50">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <a
-            href="#"
+          {/* Elemento div enfocable en lugar de enlace */}
+          <div
+            tabIndex={0}
             className="focus:outline-none focus:ring-2 focus:ring-[#0d9e71] focus:ring-offset-2 rounded"
-            aria-label={t.home}
+            
           >
             <img
               src={logo}
@@ -227,7 +229,7 @@ export const Header: React.FC = () => {
               className="h-7"
               style={{ filter: 'brightness(0) saturate(100%)' }}
             />
-          </a>
+          </div>
 
           <div className="flex items-center space-x-3">
             {!isMobile && (
