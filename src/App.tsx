@@ -5,13 +5,17 @@ import Layout from './components/Layout';
 import { ScrollToTop } from './components/ScrollToTop';
 
 import { PackAccessibility } from './pages/PackAccessibility';
+import { useLanguage } from './Context/LanguageContext';
 
 function App() {
+
+ const { language } = useLanguage();
+
   return (
     <BrowserRouter>
-      <ScrollToTop /> {/* 👈 Correcto: fuera de <Routes> */}
+      <ScrollToTop /> 
       <Routes>
-        {/* Ruta principal con Layout */}
+       
         <Route path="/" element={<Layout />}>
           {/* Página de inicio */}
           <Route index element={<PackAccessibility />} />

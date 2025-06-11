@@ -3,13 +3,13 @@ import { useLanguage } from '../../Context/LanguageContext';
 const translations = {
   en: {
     title: "Is your website ready to comply with the European Accessibility Act (EAA)?",
-    subtitle: "Kick-start your adaptation to WCAG 2.2 AA",
+    subtitle: "Kick-start your adaptation to WCAG 2.2 AA and EN 301 549",
     description: "We audit your critical modules and write the Accessibility Statement in a maximum of 4 weeks., for just 3000 €, so you can meet the 28 June 2025 deadline with zero risk.",
     cardTitle: "Our compliance package includes:",
     cardPoints: [
       "Comprehensive audit of critical modules",
       "Accessibility Statement drafting",
-      "WCAG 2.2 AA compliance roadmap",
+      "WCAG 2.2 AA and EN 301 549 compliance roadmap",
       "Priority support to meet the deadline"
     ],
    
@@ -17,13 +17,13 @@ const translations = {
   },
   es: {
     title: "¿Está tu web preparada para cumplir la Ley de Accesibilidad Europea (EAA)?",
-    subtitle: "Arranca tu adaptación a las WCAG 2.2 (nivel AA)",
+    subtitle: "Ponga en marcha su adaptación a WCAG 2.2 AA y EN 301 549",
     description: "Auditamos tus módulos críticos y redactamos la Declaración de Accesibilidad en un maximo de 4 semanas, por solo 3000 €, para que llegues a la fecha límite del 28 de junio de 2025 sin riesgos.",
     cardTitle: "Nuestro paquete de cumplimiento incluye:",
     cardPoints: [
       "Auditoría completa de módulos críticos",
       "Redacción de la Declaración de Accesibilidad",
-      "Hoja de ruta para cumplimiento WCAG 2.2 AA",
+      "Hoja de ruta para el cumplimiento de WCAG 2.2 AA y EN 301 549",
       "Soporte prioritario para cumplir el plazo"
     ],
     

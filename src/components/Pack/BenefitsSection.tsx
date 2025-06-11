@@ -6,7 +6,7 @@ const translations = {
     title: "Why hire the ",
     packText: "Web Accessibility Pack",
     benefits: [
-      "Comply with the European Accessibility Directive (EU) 2019/882 and RD 1112/2018.",
+      " Comply with the European Accessibility Directive (EU) 2019/882 and RD 1112/2018, based on the EN 301 549 standard and WCAG 2.2 level AA.",
       "Avoid fines and protect your company.",
       "Improve the user experience for all people.",
       "Strengthen your image as a responsible and inclusive company.",
@@ -18,7 +18,7 @@ const translations = {
     title: "¿Por qué contratar el ",
     packText: "Paquete Accesibilidad Web",
     benefits: [
-      "Cumple con la Directiva Europea de Accesibilidad (UE) 2019/882 y el RD 1112/2018.",
+      " Cumplir con la Directiva Europea de Accesibilidad (UE) 2019/882 y el RD 1112/2018, basado en la norma EN 301 549 y WCAG 2.2 nivel AA.",
       "Evita multas y protege a tu empresa.",
       "Mejora la experiencia de usuario para todas las personas.",
       "Refuerza tu imagen como empresa responsable e inclusiva.",
